@@ -1,4 +1,4 @@
-package ordenacao;
+package nlogn;
 
 public class MergeSort {
 
