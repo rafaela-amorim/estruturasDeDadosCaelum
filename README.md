@@ -1,2 +1,2 @@
 # EstruturasDeDados
-algorithms implemented at data structures discipline
+Algorithms implemented at data structures discipline
