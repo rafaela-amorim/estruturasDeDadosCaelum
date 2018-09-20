@@ -1,4 +1,4 @@
-package nlogn;
+package n2;
 
 import util.Swap;
 

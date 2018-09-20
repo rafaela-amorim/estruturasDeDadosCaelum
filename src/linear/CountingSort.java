@@ -39,7 +39,8 @@ public class CountingSort {
 		
 	}
 	public static void main(String[] args) {
-		int[] array = new int[] {10,21,24,12,46,99,52,76,133,457,650,25,432,40,271,101,420};
+		///int[] array = new int[] {10,21,24,12,46,99,52,76,133,457,650,25,432,40,271,101,420};
+		int[] array = new int[] {6,0,2,0,1,3,4,6,1,3,2};
 		CountingSort.sort(array, 0, array.length - 1);
 		
 		
