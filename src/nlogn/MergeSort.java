@@ -4,10 +4,9 @@ import java.util.Arrays;
 
 public class MergeSort<T extends Comparable<T>> {
 	
-	public T[] mergeSort(T[] array, int leftIndex, int rightIndex) {
+	public void mergeSort(T[] array, int leftIndex, int rightIndex) {
 		if (array.length > 1 && leftIndex < rightIndex) {
 			int meio = (rightIndex - leftIndex) / 2;
-			T[] saida = (T[]) new Comparable[array.length];
 			
 			mergeSort(array, leftIndex, meio);
 			mergeSort(array, meio + 1, rightIndex);
@@ -16,6 +15,7 @@ public class MergeSort<T extends Comparable<T>> {
 			int j = 0;
 			int k = 0;
 			
+			T[] saida = (T[]) new Comparable[array.length];
 			T[] left = (T[]) new Comparable[rightIndex - leftIndex + 1];
 			T[] right = (T[]) new Comparable[rightIndex - leftIndex + 1];
 			
@@ -45,9 +45,9 @@ public class MergeSort<T extends Comparable<T>> {
 					saida[k++] = right[l];
 			}
 			
-			return saida;
+			for (int n = leftIndex; n <= rightIndex; n++) 
+				array[n] = saida[n];
 		}
-		return array;
 	}
 	
 	public static void main(String[] args) {
