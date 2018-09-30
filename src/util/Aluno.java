@@ -1,4 +1,4 @@
-package caelum;
+package util;
 
 public class Aluno {
 	

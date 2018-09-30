@@ -1,4 +1,6 @@
-package caelum;
+package vetorArrayList;
+
+import util.Aluno;
 
 /**
  * Classe que representa um vetor, ou um conjunto de Objects

@@ -1,6 +1,8 @@
-package caelum;
+package vetorArrayList;
 
 import java.util.ArrayList;
+
+import util.Aluno;
 
 public class main {
 	

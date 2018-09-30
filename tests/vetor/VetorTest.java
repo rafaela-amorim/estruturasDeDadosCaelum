@@ -1,9 +1,12 @@
-package caelum;
+package vetor;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import util.Aluno;
+import vetorArrayList.Vetor;
 
 public class VetorTest {
 	
