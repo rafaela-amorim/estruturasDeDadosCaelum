@@ -1,21 +1,28 @@
 package caelum;
 
+import java.util.ArrayList;
+
 public class main {
 	
 	public static void main(String[] args) {
-		Vetor v = new Vetor();
+		//ArrayList vetor = new ArrayList();
+		Vetor vetor = new Vetor();
+		Aluno aluno = new Aluno();
+		aluno.setNome("eukkkk");
 		
-		Aluno a = new Aluno();
-		Aluno b = new Aluno();
+		System.out.println(vetor.tamanho());
 		
-		v.adiciona(a);
-		v.adiciona(b);
+		for (int i = 1; i <= 1000; i++) 
+			vetor.adiciona(aluno);
 		
-		a.setNome("eune");
-		b.setNome("ota");
-		System.out.println(v.toString());
+		System.out.println(vetor.tamanho());
 		
-		v.remove(0);
-		System.out.println(v.toString());
+		ArrayList<Aluno> lista = new ArrayList<>();
+		System.out.println(lista.size());
+		
+		for (int i = 0; i < 1000; i++) 
+			lista.add((Aluno) vetor.pega(i));
+		
+		System.out.println(lista.size());
 	}
 }

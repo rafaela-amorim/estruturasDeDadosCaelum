@@ -3,17 +3,17 @@ package caelum;
 /**
  * Classe que representa um vetor, ou um conjunto de Objects
  * 
- * @author Rafaela de Amorim Barbosa Silva - Computer Science's Undergraduate at UFCG
+ * @author Rafaela de Amorim Barbosa Silva - Computer Science's Undergraduate at
+ *         UFCG
  *
  */
 public class Vetor {
 
 	private Object[] objetos;
-	// private final int MAX_objetos = 10000;
 	private int totalObjetos;
 
 	public Vetor() {
-		objetos = new Object[100]; // dps MAX_objetos
+		objetos = new Object[100];
 		totalObjetos = 0;
 	}
 
@@ -24,9 +24,9 @@ public class Vetor {
 	 * 
 	 * @param al Object novo do array
 	 */
-	public void adiciona(Object al) {
+	public void adiciona(Aluno aluno) {
 		garanteEspaco();
-		objetos[totalObjetos++] = al;
+		this.objetos[totalObjetos++] = aluno;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class Vetor {
 	 * @param al  Object a ser adicionado
 	 * @param pos Posicao especificada para alocação
 	 */
-	public void adiciona(Object al, int pos) {
+	public void adiciona(int pos, Object al) {
 		garanteEspaco();
 
 		if (!posicaoValida(pos))
@@ -76,10 +76,11 @@ public class Vetor {
 
 		objetos[posicao] = null;
 
-		for (int i = posicao; i < totalObjetos - 1; i++)
+		for (int i = posicao; i < totalObjetos; i++)
 			objetos[i] = objetos[i + 1];
 
-		objetos[totalObjetos - 1] = null; // ultimo elemento q havia sido puxado agora deve ser null
+		if (totalObjetos > 0)
+			objetos[totalObjetos - 1] = null; // ultimo elemento q havia sido puxado agora deve ser null
 		totalObjetos--;
 	}
 
@@ -100,6 +101,61 @@ public class Vetor {
 		}
 
 		return achou;
+	}
+
+	/**
+	 * Operação que limpa todos os elementos do array objetos.
+	 */
+	public void clear() {
+		for (int i = 0; i < totalObjetos; i++)
+			objetos[i] = null;
+	}
+
+	/**
+	 * Retorna o índice da primeira ocorrência de um Object passado com parâmetro,
+	 * retorna -1 caso o objeto não esteja presente no vetor.
+	 * 
+	 * @param objeto Parâmetro para a busca
+	 * @return Índice do objeto, caso seja encontrado. -1 caso contrário.
+	 */
+	public int indexOf(Object objeto) {
+		int saida = -1;
+		boolean achou = false;
+		int i = 0;
+
+		while (i < totalObjetos && !achou) {
+			if (objetos[i].equals(objeto)) {
+				saida = i;
+				achou = true;
+			}
+			i++;
+		}
+
+		return saida;
+	}
+
+	/**
+	 * Retorna o índice da última ocorrência de um tal objeto passado com parâmetro,
+	 * ou -1 se não houver esse elemento no vetor.
+	 * 
+	 * @param obj Parâmetro para busca
+	 * @return Índice da última ocorrência do objeto, -1 se o objeto n estiver no
+	 *         vetor.
+	 */
+	public int lastIndexOf(Object obj) {
+		int saida = -1;
+		int i = totalObjetos - 1;
+		boolean achou = false;
+
+		while (i >= 0 && !achou) {
+			if (objetos[i].equals(obj)) {
+				saida = i;
+				achou = true;
+			}
+			i--;
+		}
+
+		return saida;
 	}
 
 	/**
@@ -125,10 +181,16 @@ public class Vetor {
 	private String buildString() {
 		String sai = "[";
 
-		for (int i = 0; i < totalObjetos - 1; i++) {
-			sai += objetos[i].toString() + ", ";
-		}
-		sai += objetos[totalObjetos - 1].toString() + "]";
+		if (totalObjetos > 0) {
+
+			for (int i = 0; i < totalObjetos - 1; i++) {
+				sai += objetos[i].toString() + ", ";
+			}
+
+			sai += objetos[totalObjetos - 1].toString() + "]";
+		} else
+			sai += "]";
+
 		return sai;
 	}
 
